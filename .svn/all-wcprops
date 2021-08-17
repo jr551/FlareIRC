@@ -1,0 +1,389 @@
+K 25
+svn:wc:ra_dav:version-url
+V 21
+/svn/!svn/ver/1/trunk
+END
+privatemessagetab.ui
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/3/trunk/privatemessagetab.ui
+END
+chattab.ui
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/2/trunk/chattab.ui
+END
+icon.icns
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/2/trunk/icon.icns
+END
+ui_privatechatwindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/3/trunk/ui_privatechatwindow.h
+END
+moc_chattab.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/3/trunk/moc_chattab.cpp
+END
+moc_privatemessagetab.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/3/trunk/moc_privatemessagetab.cpp
+END
+FlareIRC.pro
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/2/trunk/FlareIRC.pro
+END
+privatechatwindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/3/trunk/privatechatwindow.h
+END
+ui_chattab.h
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/3/trunk/ui_chattab.h
+END
+moc_inputdialog.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/3/trunk/moc_inputdialog.cpp
+END
+moc_talkwindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/3/trunk/moc_talkwindow.cpp
+END
+moc_optionswindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/3/trunk/moc_optionswindow.cpp
+END
+FlareIRC.pro.user
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/2/trunk/FlareIRC.pro.user
+END
+object_script.FlareIRC.Debug
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/3/trunk/object_script.FlareIRC.Debug
+END
+inputdialog.h
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/3/trunk/inputdialog.h
+END
+ui_optionswindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/3/trunk/ui_optionswindow.h
+END
+ircsocket.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/3/trunk/ircsocket.cpp
+END
+optionswindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/3/trunk/optionswindow.h
+END
+moc_servertab.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/3/trunk/moc_servertab.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/3/trunk/Makefile
+END
+ui_servertab.h
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/3/trunk/ui_servertab.h
+END
+servertab.h
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/3/trunk/servertab.h
+END
+scriptmanager.h
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/3/trunk/scriptmanager.h
+END
+privatemessagetab.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/3/trunk/privatemessagetab.cpp
+END
+chattab.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/2/trunk/chattab.cpp
+END
+moc_talkwindowtab.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/3/trunk/moc_talkwindowtab.cpp
+END
+talkwindow.ui
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/3/trunk/talkwindow.ui
+END
+inputdialog.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/3/trunk/inputdialog.cpp
+END
+optionswindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/3/trunk/optionswindow.cpp
+END
+servertab.ui
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/3/trunk/servertab.ui
+END
+flareirc.qrc
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/2/trunk/flareirc.qrc
+END
+ircsocket.h
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/3/trunk/ircsocket.h
+END
+servertab.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/3/trunk/servertab.cpp
+END
+privatechatwindow.ui
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/3/trunk/privatechatwindow.ui
+END
+scriptmanager.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/3/trunk/scriptmanager.cpp
+END
+moc_privatechatwindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/3/trunk/moc_privatechatwindow.cpp
+END
+ui_privatemessagetab.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/3/trunk/ui_privatemessagetab.h
+END
+FlareIRC.rc
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/2/trunk/FlareIRC.rc
+END
+talkwindowtab.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/3/trunk/talkwindowtab.cpp
+END
+privatemessagetab.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/3/trunk/privatemessagetab.h
+END
+chattab.h
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/2/trunk/chattab.h
+END
+object_script.FlareIRC.Release
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/3/trunk/object_script.FlareIRC.Release
+END
+moc_connectwindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/3/trunk/moc_connectwindow.cpp
+END
+ui_inputdialog.h
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/3/trunk/ui_inputdialog.h
+END
+ui_connectwindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/3/trunk/ui_connectwindow.h
+END
+main.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/3/trunk/main.cpp
+END
+connectwindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/2/trunk/connectwindow.h
+END
+talkwindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/3/trunk/talkwindow.h
+END
+qrc_flareirc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/3/trunk/qrc_flareirc.cpp
+END
+privatechatwindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/3/trunk/privatechatwindow.cpp
+END
+chatwindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/2/trunk/chatwindow.cpp
+END
+ui_chatwindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/3/trunk/ui_chatwindow.h
+END
+inputdialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/3/trunk/inputdialog.ui
+END
+Makefile.Release
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/3/trunk/Makefile.Release
+END
+connectwindow.ui
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/2/trunk/connectwindow.ui
+END
+optionswindow.ui
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/3/trunk/optionswindow.ui
+END
+talkwindowtab.h
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/3/trunk/talkwindowtab.h
+END
+icon.ico
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/2/trunk/icon.ico
+END
+Makefile.Debug
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/3/trunk/Makefile.Debug
+END
+connectwindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/2/trunk/connectwindow.cpp
+END
+moc_italkwindowtab.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/3/trunk/moc_italkwindowtab.cpp
+END
+talkwindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/3/trunk/talkwindow.cpp
+END
+moc_ircsocket.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/3/trunk/moc_ircsocket.cpp
+END
+ui_talkwindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/3/trunk/ui_talkwindow.h
+END
