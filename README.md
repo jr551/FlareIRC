@@ -15,8 +15,8 @@ GameChat Pro is a next-generation, cross-platform gaming chat application built 
 
 ### 💬 Discord-Style Text Chat
 - Familiar server-based layout with a **sidebar** for quick navigation between servers and channels.
+- Real-time messaging powered by **WebSocket protocol** with instant delivery, typing indicators, and read receipts.
 - Rich text formatting, inline media embeds, and threaded conversations.
-- Real-time message delivery with typing indicators and read receipts.
 
 ### 🎮 Game Activity Detection
 - Automatically detects what game you're playing and displays your **live activity status** to friends.
@@ -62,8 +62,8 @@ GameChat Pro is available on all major desktop platforms:
 ### Clone & Build
 
 ```bash
-git clone https://github.com/jr551/FlareIRC.git
-cd FlareIRC
+git clone https://github.com/jr551/GameChatPro.git
+cd GameChatPro
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build . --config Release
@@ -73,9 +73,9 @@ cmake --build . --config Release
 
 Pre-built binaries are available for all platforms:
 
-- 🪟 [Windows Installer](https://github.com/jr551/FlareIRC/releases/latest) (`.exe`)
-- 🍎 [macOS DMG](https://github.com/jr551/FlareIRC/releases/latest) (`.dmg`)
-- 🐧 [Linux AppImage](https://github.com/jr551/FlareIRC/releases/latest) (`.AppImage`)
+- 🪟 [Windows Installer](https://github.com/jr551/GameChatPro/releases/latest) (`.exe`)
+- 🍎 [macOS DMG](https://github.com/jr551/GameChatPro/releases/latest) (`.dmg`)
+- 🐧 [Linux AppImage](https://github.com/jr551/GameChatPro/releases/latest) (`.AppImage`)
 
 ---
 
