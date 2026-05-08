@@ -2,7 +2,7 @@
 
 GameChat Pro is a next-generation, cross-platform gaming chat application built in C++ with Qt — designed to keep you connected with your squad in crystal-clear voice and lightning-fast text chat, no matter what game you're playing.
 
-![Screenshot](https://raw.githubusercontent.com/jr551/GameChatPro/main/flareirc/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/jr551/FlareIRC/main/flareirc/screenshot.png)
 
 ## Features
 
@@ -38,6 +38,7 @@ Unlock the full potential of GameChat Pro with **Premium**:
 |--------------|----------------|-----------------------------------------------|
 | **Monthly**  | $5.00/month    | Animated emojis, custom themes, overlay tools  |
 | **Lifetime** | $50.00 one-time | Everything in Monthly, plus exclusive themes, priority support, and early access to new features |
+*Prices in USD; taxes may vary by region*
 
 ## System Requirements
 
@@ -58,10 +59,10 @@ GameChat Pro is available on all major desktop platforms:
 ### Clone & Build
 
 ```bash
-git clone https://github.com/jr551/GameChatPro.git
-cd GameChatPro
+git clone https://github.com/jr551/FlareIRC.git
+cd FlareIRC
 mkdir build && cd build
-cmake ..
+cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build . --config Release
 ```
 
@@ -69,9 +70,9 @@ cmake --build . --config Release
 
 Pre-built binaries are available for all platforms:
 
-- 🪟 [Windows Installer](https://github.com/jr551/GameChatPro/releases/latest) (`.exe`)
-- 🍎 [macOS DMG](https://github.com/jr551/GameChatPro/releases/latest) (`.dmg`)
-- 🐧 [Linux AppImage](https://github.com/jr551/GameChatPro/releases/latest) (`.AppImage`)
+- 🪟 [Windows Installer](https://github.com/jr551/FlareIRC/releases/latest) (`.exe`)
+- 🍎 [macOS DMG](https://github.com/jr551/FlareIRC/releases/latest) (`.dmg`)
+- 🐧 [Linux AppImage](https://github.com/jr551/FlareIRC/releases/latest) (`.AppImage`)
 
 ---
 
