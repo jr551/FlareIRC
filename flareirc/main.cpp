@@ -1,20 +1,15 @@
-#include <QtGui/QApplication>
-#include "connectwindow.h"
-
-
-
-
-ConnectWindow *gConnectWindow = NULL;
+#include <QtWidgets/QApplication>
+#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    QCoreApplication::setOrganizationName("John Rowe");
-    QCoreApplication::setApplicationName("FlareIRC");
+    QCoreApplication::setOrganizationName("GameChat");
+    QCoreApplication::setApplicationName("GameChatPro");
 
-    gConnectWindow = new ConnectWindow();
-    gConnectWindow->show();
+    MainWindow *win = new MainWindow();
+    win->show();
 
     return a.exec();
 }

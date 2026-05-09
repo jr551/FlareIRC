@@ -2,12 +2,12 @@
 # Project created by QtCreator 2009-12-15T14:51:44
 # -------------------------------------------------
 QT += network \
-    webkit \
-    script
-TARGET = FlareIRC
+    webengine \
+    widgets
+TARGET = GameChatPro
 TEMPLATE = app
 SOURCES += main.cpp \
-    connectwindow.cpp \
+    mainwindow.cpp \
     ircsocket.cpp \
     talkwindow.cpp \
     chattab.cpp \
@@ -17,7 +17,7 @@ SOURCES += main.cpp \
     inputdialog.cpp \
     optionswindow.cpp \
     scriptmanager.cpp
-HEADERS += connectwindow.h \
+HEADERS += mainwindow.h \
     ircsocket.h \
     talkwindow.h \
     chattab.h \
@@ -27,7 +27,7 @@ HEADERS += connectwindow.h \
     inputdialog.h \
     optionswindow.h \
     scriptmanager.h
-FORMS += connectwindow.ui \
+FORMS += mainwindow.ui \
     talkwindow.ui \
     chattab.ui \
     privatemessagetab.ui \
