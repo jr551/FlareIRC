@@ -1,5 +1,4 @@
 #include "subscriptionmanager.h"
-#include <QDebug>
 #include <QUuid>
 #include <QMetaObject>
 
@@ -22,7 +21,7 @@ SubscriptionManager::~SubscriptionManager()
 {
     if (provider) {
         provider->shutdown();
-        delete provider;
+        provider->deleteLater();
         provider = nullptr;
     }
 }
@@ -89,7 +88,7 @@ void SubscriptionManager::setPaymentProvider(PaymentProvider *prov)
     if (provider) {
         provider->disconnect(this);
         provider->shutdown();
-        delete provider;
+        provider->deleteLater();
     }
     provider = prov;
     if (provider) {
@@ -184,7 +183,6 @@ void SteamPaymentProvider::shutdown()
 
 bool SteamPaymentProvider::startPurchase(SubscriptionTier tier)
 {
-    Q_UNUSED(tier);
     qDebug() << "Starting Steam purchase for tier" << static_cast<int>(tier);
 
 // In a real implementation, this would call SteamAPI_MicroTxn
@@ -211,11 +209,11 @@ QVariantMap SteamPaymentProvider::getPurchaseMetadata(SubscriptionTier tier) con
     metadata["price"] = price;
     metadata["currency"] = "USD";
     metadata["description"] = "GameChat Pro - " + SubscriptionManager::tierToDisplayName(tier);
-    metadata["itemId"] = QString::number(static_cast<int>(tier));
+    metadata["itemId"] = SubscriptionManager::tierToString(tier);
     return metadata;
 }
- 
- void SteamPaymentProvider::onMicroTxnResult(int authId, const QString &orderId, bool successful)
+
+void SteamPaymentProvider::onMicroTxnResult(int authId, const QString &orderId, bool successful)
 {
     emit purchaseCompleted(successful, orderId, successful ? QString() : "Steam purchase failed");
 }
@@ -256,7 +254,6 @@ void AppStorePaymentProvider::shutdown()
 
 bool AppStorePaymentProvider::startPurchase(SubscriptionTier tier)
 {
-    Q_UNUSED(tier);
     qDebug() << "Starting AppStore purchase for tier" << static_cast<int>(tier);
 
 // Simulate App Store purchase flow
@@ -297,8 +294,8 @@ void AppStorePaymentProvider::onStoreKitResponse(const QVariantMap &response)
         emit purchaseCompleted(false, QString(), "App Store purchase cancelled");
     }
 }
- 
- // GooglePlayPaymentProvider
+
+// GooglePlayPaymentProvider
 GooglePlayPaymentProvider::GooglePlayPaymentProvider(QObject *parent)
     : PaymentProvider(parent)
     , m_googlePlayPublicKey("")
@@ -334,7 +331,6 @@ void GooglePlayPaymentProvider::shutdown()
 
 bool GooglePlayPaymentProvider::startPurchase(SubscriptionTier tier)
 {
-    Q_UNUSED(tier);
     qDebug() << "Starting Google Play purchase for tier" << static_cast<int>(tier);
 
 // Simulate Google Play purchase flow
@@ -379,8 +375,8 @@ void GooglePlayPaymentProvider::onBillingResponse(const QVariantMap &response)
         emit purchaseCompleted(false, QString(), "Google Play purchase failed");
     }
 }
- 
- // StripePaymentProvider
+
+// StripePaymentProvider
 StripePaymentProvider::StripePaymentProvider(const QString &apiKey, QObject *parent)
     : PaymentProvider(parent)
     , m_apiKey(apiKey)
