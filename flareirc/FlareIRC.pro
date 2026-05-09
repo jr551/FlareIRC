@@ -4,7 +4,8 @@
 QT += network \
     multimedia \
     webkit \
-    script
+    script \
+    testlib
 TARGET = FlareIRC
 TEMPLATE = app
 SOURCES += main.cpp \
@@ -30,6 +31,11 @@ HEADERS += connectwindow.h \
     optionswindow.h \
     scriptmanager.h \
     voiceengine.h
+
+# Test target
+TEST_SOURCES += voiceenginetest.cpp
+TEST_HEADERS += voiceengine.h
+
 FORMS += connectwindow.ui \
     talkwindow.ui \
     chattab.ui \
