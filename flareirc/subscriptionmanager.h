@@ -44,7 +44,6 @@ public:
 
 signals:
     void subscriptionActive(SubscriptionTier tier);
-    void subscriptionExpired();
     void purchaseSuccess(SubscriptionTier tier, const QString &receiptId);
     void purchaseFailed(const QString &error);
     void receiptValidated(bool valid, const QString &platform);
@@ -109,13 +108,10 @@ public:
     QVariantMap getPurchaseMetadata(SubscriptionTier tier) const override;
 
 private slots:
-    void onMicroTxnAuthResponse(int authId, bool success);
     void onMicroTxnResult(int authId, const QString &orderId, bool successful);
 
 private:
     void *m_steamAPI; // Platform-specific handle
-    int m_pendingAuthId;
-    SubscriptionTier m_pendingTier;
 };
 
 class AppStorePaymentProvider : public PaymentProvider
@@ -137,11 +133,9 @@ public:
 
 private slots:
     void onStoreKitResponse(const QVariantMap &response);
-    void onReceiptVerificationComplete(const QByteArray &receiptData, bool valid);
 
 private:
     QString m_appStoreSharedSecret;
-    QVariantMap m_pendingReceipt;
 };
 
 class GooglePlayPaymentProvider : public PaymentProvider
@@ -163,11 +157,9 @@ public:
 
 private slots:
     void onBillingResponse(const QVariantMap &response);
-    void onPurchaseVerified(const QByteArray &purchaseData, const QString &signature, bool valid);
 
 private:
     QString m_googlePlayPublicKey;
-    QVariantMap m_pendingPurchase;
 };
 
 class StripePaymentProvider : public PaymentProvider
