@@ -75,8 +75,8 @@ public:
 
     virtual QString providerName() const = 0;
     virtual Platform platform() const = 0;
-    virtual bool initialize() = 0;
-    virtual void shutdown() = 0;
+    virtual bool initialize() { return true; }
+    virtual void shutdown() {}
 
     virtual bool startPurchase(SubscriptionTier tier) = 0;
     virtual bool validateReceipt(const QVariantMap &receiptData) = 0;

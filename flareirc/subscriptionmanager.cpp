@@ -1,5 +1,7 @@
 #include "subscriptionmanager.h"
 #include <QDebug>
+#include <QUuid>
+#include <QMetaObject>
 
 // Static member initialization
 QList<SubscriptionDetails> SubscriptionManager::s_availableSubscriptions = {
@@ -64,8 +66,6 @@ bool SubscriptionManager::purchaseSubscription(SubscriptionTier tier)
 
 bool SubscriptionManager::validateReceipt(const QString &platform, const QVariantMap &receiptData)
 {
-    Q_UNUSED(platform); // Platform is for logging/tracking
-
     if (!provider) {
         qWarning() << "No payment provider set";
         emit receiptValidated(false, platform);
@@ -85,12 +85,18 @@ bool SubscriptionManager::validateReceipt(const QString &platform, const QVarian
 
 void SubscriptionManager::setPaymentProvider(PaymentProvider *prov)
 {
+    if (provider == prov) return;
     if (provider) {
+        provider->disconnect(this);
         provider->shutdown();
         delete provider;
     }
     provider = prov;
     if (provider) {
+        connect(provider, &PaymentProvider::purchaseCompleted, this, [this](bool success, const QString &receiptId, const QString &error) {
+            if (success) emit purchaseSuccess(pendingTier, receiptId);
+            else emit purchaseFailed(error);
+        });
         provider->initialize();
     }
 }
@@ -183,9 +189,9 @@ bool SteamPaymentProvider::startPurchase(SubscriptionTier tier)
     m_pendingTier = tier;
     qDebug() << "Starting Steam purchase for tier" << static_cast<int>(tier);
 
-    // In a real implementation, this would call SteamAPI_MicroTxn
+// In a real implementation, this would call SteamAPI_MicroTxn
     // For now, simulate success with a fake receipt
-    Q_metaObject_invoke(this, "onMicroTxnResult", Q_ARG(int, 12345), Q_ARG(QString, "STEAM_RECEIPT_123"), Q_ARG(bool, true));
+    QMetaObject::invokeMethod(this, "onMicroTxnResult", Qt::QueuedConnection, Q_ARG(int, 12345), Q_ARG(QString, "STEAM_RECEIPT_123"), Q_ARG(bool, true));
     return true;
 }
 
@@ -194,8 +200,9 @@ bool SteamPaymentProvider::validateReceipt(const QVariantMap &receiptData)
     QString receiptId = receiptData.value("receiptId").toString();
     qDebug() << "Validating Steam receipt:" << receiptId;
 
-    // In a real implementation, verify with Steam DRM/back-end
-    // Simplified: any non-empty receipt is valid
+    // STUB: In a real implementation, verify with Steam DRM/back-end
+    // This simplified version only checks for non-empty receipt but is NOT secure
+    // TODO: Implement proper Steam receipt verification against Steam's servers
     return !receiptId.isEmpty();
 }
 
@@ -260,8 +267,8 @@ bool AppStorePaymentProvider::startPurchase(SubscriptionTier tier)
     m_pendingTier = tier;
     qDebug() << "Starting AppStore purchase for tier" << static_cast<int>(tier);
 
-    // Simulate App Store purchase flow
-    Q_metaObject_invoke(this, "onStoreKitResponse", Q_ARG(QVariantMap, QVariantMap{{"success", true}, {"receipt", "appstore_receipt_data"}}));
+// Simulate App Store purchase flow
+    QMetaObject::invokeMethod(this, "onStoreKitResponse", Qt::QueuedConnection, Q_ARG(QVariantMap, QVariantMap{{"success", true}, {"receipt", "appstore_receipt_data"}}));
     return true;
 }
 
@@ -270,8 +277,9 @@ bool AppStorePaymentProvider::validateReceipt(const QVariantMap &receiptData)
     QByteArray receipt = receiptData.value("receiptData").toByteArray();
     qDebug() << "Validating AppStore receipt, size:" << receipt.size();
 
-    // In real implementation, send to Apple verification server
-    // Simplified: check receipt exists
+    // STUB: In a real implementation, send to Apple verification server
+    // This simplified version only checks for non-empty receipt but is NOT secure
+    // TODO: Implement proper App Store receipt verification against Apple's servers
     return !receipt.isEmpty();
 }
 
@@ -342,8 +350,8 @@ bool GooglePlayPaymentProvider::startPurchase(SubscriptionTier tier)
     m_pendingTier = tier;
     qDebug() << "Starting Google Play purchase for tier" << static_cast<int>(tier);
 
-    // Simulate Google Play purchase flow
-    Q_metaObject_invoke(this, "onBillingResponse", Q_ARG(QVariantMap, QVariantMap{{"success", true}, {"purchaseData", "google_play_purchase"}, {"signature", "signature_hash"}}));
+// Simulate Google Play purchase flow
+    QMetaObject::invokeMethod(this, "onBillingResponse", Qt::QueuedConnection, Q_ARG(QVariantMap, QVariantMap{{"success", true}, {"purchaseData", "google_play_purchase"}, {"signature", "signature_hash"}}));
     return true;
 }
 
@@ -354,7 +362,9 @@ bool GooglePlayPaymentProvider::validateReceipt(const QVariantMap &receiptData)
 
     qDebug() << "Validating Google Play purchase";
 
-    // In real implementation, verify signature with Google's public key
+    // STUB: In a real implementation, verify signature with Google's public key
+    // This simplified version only checks for non-empty data but is NOT secure
+    // TODO: Implement proper Google Play signature verification
     return !purchaseData.isEmpty() && !signature.isEmpty();
 }
 
@@ -455,8 +465,8 @@ bool StripePaymentProvider::startPurchase(SubscriptionTier tier)
     m_activeSession["priceId"] = priceId;
     m_activeSession["tier"] = static_cast<int>(tier);
 
-    // Simulate checkout completion
-    Q_metaObject_invoke(this, "onCheckoutComplete", Q_ARG(QString, m_activeSession["sessionId"].toString()), Q_ARG(bool, true));
+// Simulate checkout completion
+    QMetaObject::invokeMethod(this, "onCheckoutComplete", Qt::QueuedConnection, Q_ARG(QString, m_activeSession["sessionId"].toString()), Q_ARG(bool, true));
     return true;
 }
 
@@ -465,8 +475,9 @@ bool StripePaymentProvider::validateReceipt(const QVariantMap &receiptData)
     QString paymentIntentId = receiptData.value("paymentIntentId").toString();
     qDebug() << "Validating Stripe payment intent:" << paymentIntentId;
 
-    // In real implementation, verify payment intent status via Stripe API
-    // For now, check it's not empty
+    // STUB: In a real implementation, verify payment intent status via Stripe API
+    // This simplified version only checks for non-empty ID but is NOT secure
+    // TODO: Implement proper Stripe payment intent verification
     return !paymentIntentId.isEmpty();
 }
 
