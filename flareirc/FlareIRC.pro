@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     inputdialog.cpp \
     optionswindow.cpp \
     scriptmanager.cpp \
-    voiceengine.cpp
+    voiceengine.cpp \
+    subscriptionmanager.cpp
 HEADERS += connectwindow.h \
     ircsocket.h \
     talkwindow.h \
@@ -29,7 +30,8 @@ HEADERS += connectwindow.h \
     inputdialog.h \
     optionswindow.h \
     scriptmanager.h \
-    voiceengine.h
+    voiceengine.h \
+    subscriptionmanager.h
 FORMS += connectwindow.ui \
     talkwindow.ui \
     chattab.ui \
