@@ -15,5 +15,9 @@
         <file>icons/server_chat.png</file>
         <file>icons/Mail.png</file>
         <file>icons/error.png</file>
+        <file>icons/bits.png</file>
+        <file>icons/sub.png</file>
+        <file>icons/member.png</file>
+        <file>icons/donate.png</file>
     </qresource>
 </RCC>
