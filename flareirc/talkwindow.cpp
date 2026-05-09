@@ -16,8 +16,8 @@ TalkWindow::TalkWindow(QWidget *parent, QString server, int port, QString nick, 
 {
     ui->setupUi(this);
     setWindowIcon (QIcon(":/icons/icon_blue.png"));
-    ircConnection = new IRCConnection(server, 6667, nick);
-    ircConnection->Connect();
+    ircConnection = new WebSocketClient(server, port, nick, this);
+    ircConnection->connect();
     serverTab = new ServerTab(this, this);
     ui->tabChats->removeTab(0);
     ui->tabChats->addTab( serverTab, server);

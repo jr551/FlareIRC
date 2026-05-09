@@ -3,12 +3,13 @@
 # -------------------------------------------------
 QT += network \
     webkit \
-    script
+    script \
+    websockets
 TARGET = FlareIRC
 TEMPLATE = app
 SOURCES += main.cpp \
     connectwindow.cpp \
-    ircsocket.cpp \
+    websocketclient.cpp \
     talkwindow.cpp \
     chattab.cpp \
     privatemessagetab.cpp \
@@ -18,7 +19,7 @@ SOURCES += main.cpp \
     optionswindow.cpp \
     scriptmanager.cpp
 HEADERS += connectwindow.h \
-    ircsocket.h \
+    websocketclient.h \
     talkwindow.h \
     chattab.h \
     privatemessagetab.h \
