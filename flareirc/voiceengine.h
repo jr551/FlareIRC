@@ -99,6 +99,9 @@ private:
     // VAD threshold
     int vadThreshold;
 
+    // Current VAD level
+    VoiceActivityLevel currentVadLevel;
+
 private slots:
     void onAudioDataAvailable();
     void processAudioBuffer();

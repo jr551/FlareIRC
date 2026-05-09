@@ -22,7 +22,8 @@ VoiceEngine::VoiceEngine(QObject *parent) :
     bVoiceActivityDetection(true),
     bCapturing(false),
     bPlaying(false),
-    vadThreshold(1000)
+    vadThreshold(1000),
+    currentVadLevel(VAD_SILENCE)
 {
     // Initialize audio format for low latency (20ms frames)
     audioFormat.setSampleRate(sampleRate);
@@ -30,7 +31,6 @@ VoiceEngine::VoiceEngine(QObject *parent) :
     audioFormat.setCodec("audio/pcm");
     audioFormat.setByteOrder(QAudioFormat::LittleEndian);
     audioFormat.setSampleType(QAudioFormat::SignedInt);
-    audioFormat.setSampleRate(sampleRate);
 
     // Create Opus encoder
     int err;
@@ -125,12 +125,17 @@ QByteArray VoiceEngine::encodeFrame(const QByteArray &pcmData)
         return QByteArray();
     }
 
+    int frameSize = frameSizeMs * sampleRate / 1000;
+    if (frameSize <= 0) {
+        emit errorOccurred("Invalid frame size");
+        return QByteArray();
+    }
+
     QByteArray encoded;
     encoded.resize(4000); // Max Opus packet size
 
     const opus_int16 *pcm = reinterpret_cast<const opus_int16*>(pcmData.constData());
     int samples = pcmData.size() / sizeof(opus_int16);
-    int frameSize = frameSizeMs * sampleRate / 1000;
 
     // Process in chunks of frameSize
     int offset = 0;
@@ -186,6 +191,10 @@ void VoiceEngine::playAudio(const QByteArray &pcmData)
 
     if (!bPlaying) {
         QAudioDeviceInfo outputDevice = QAudioDeviceInfo::defaultOutputDevice();
+        if (audioOutput) {
+            delete audioOutput;
+            audioOutput = 0;
+        }
         audioOutput = new QAudioOutput(outputDevice, audioFormat, this);
         audioOutputDevice = audioOutput->start();
         bPlaying = true;
@@ -250,9 +259,7 @@ bool VoiceEngine::isVoiceActivityDetection() const
 
 VoiceEngine::VoiceActivityLevel VoiceEngine::getVoiceActivityLevel() const
 {
-    // This would be updated during audio processing
-    // For now, return the current level based on threshold
-    return VAD_SILENCE;
+    return currentVadLevel;
 }
 
 void VoiceEngine::setFrameSizeMs(int ms)
@@ -331,6 +338,7 @@ void VoiceEngine::onAudioDataAvailable()
             level = VAD_HIGH;
         }
 
+        currentVadLevel = level;
         emit voiceActivityChanged(level);
 
         // Only transmit if above silence threshold
