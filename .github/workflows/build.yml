@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Qt 6.7
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.7.0'
+        host: ${{ matrix.os }}
+        arch: ${{ matrix.os == 'windows-latest' && 'win64_msvc2019_64' || matrix.os == 'macos-latest' && 'clang_64' || 'gcc_64' }}
+        modules: 'qtnetwork qtmultimedia qtwebkit qtscript'
+
+    - name: Build project
+      working-directory: ./flareirc
+      shell: bash
+      run: |
+        qmake FlareIRC.pro -r -spec ${{ matrix.os == 'windows-latest' && 'win32-msvc' || matrix.os == 'macos-latest' && 'macx-clang' || 'linux-g++' }} CONFIG+=release
+        if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+          nmake
+        else
+          make -j$(nproc)
+        fi
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: FlareIRC-${{ matrix.os }}
+        path: |
+          flareirc/FlareIRC${{ matrix.os == 'windows-latest' && '.exe' || '' }}
+          flareirc/FlareIRC.app
