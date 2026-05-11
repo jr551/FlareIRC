@@ -40,7 +40,6 @@ VoiceEngine::VoiceEngine(QObject *parent) :
         emit errorOccurred(QString("Opus encoder creation failed: %1").arg(opus_strerror(err)));
     } else {
         opus_encoder_ctl(opusEncoder, OPUS_SET_BITRATE(bitrate));
-        opus_encoder_ctl(opusEncoder, OPUS_SET_FRAME_SIZE(frameSizeMs * sampleRate / 1000));
         opus_encoder_ctl(opusEncoder, OPUS_SET_COMPLEXITY(10));
     }
 
@@ -82,12 +81,6 @@ void VoiceEngine::captureAudio()
             if (inputDevice.isFormatSupported(testFormat)) {
                 audioFormat = testFormat;
                 sampleRate = rate;
-                if (opusEncoder) {
-                    opus_encoder_ctl(opusEncoder, OPUS_SET_SAMPLE_RATE(rate));
-                }
-                if (opusDecoder) {
-                    opus_decoder_ctl(opusDecoder, OPUS_SET_SAMPLE_RATE(rate));
-                }
                 break;
             }
         }
@@ -258,9 +251,6 @@ VoiceEngine::VoiceActivityLevel VoiceEngine::getVoiceActivityLevel() const
 void VoiceEngine::setFrameSizeMs(int ms)
 {
     frameSizeMs = ms;
-    if (opusEncoder) {
-        opus_encoder_ctl(opusEncoder, OPUS_SET_FRAME_SIZE(ms * sampleRate / 1000));
-    }
 }
 
 int VoiceEngine::getFrameSizeMs() const

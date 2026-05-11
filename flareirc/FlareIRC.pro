@@ -41,3 +41,5 @@ OTHER_FILES += FlareIRC.rc
 RC_FILE = FlareIRC.rc
 ICON = icon.icns
 RESOURCES += flareirc.qrc
+LIBS += -lopus
+
