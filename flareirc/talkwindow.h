@@ -2,7 +2,10 @@
 #define TALKWINDOW_H
 
 #include <QMainWindow>
-#include "ircsocket.h"
+#include <QWidget>
+#include <QString>
+#include <QStringList>
+#include "websocketclient.h"
 #include "privatemessagetab.h"
 #include "servertab.h"
 #include <QSystemTrayIcon>
@@ -22,7 +25,7 @@ public:
     void ChangeLocalNick( QString nick );
     void SendMessage( QString channel, QString message );
     void DoPrivateChat( QString user ){ TabForPrivChat(user); }
-    IRCConnection *GetIRCConnection(){ return ircConnection; }
+    WebSocketClient *GetIRCConnection(){ return ircConnection; }
 protected:
     void changeEvent(QEvent *e);
     void NotifyChange( TalkWindowTab* tab, bool userViewed = false);
@@ -32,7 +35,7 @@ protected:
 
 private:
     Ui::TalkWindow *ui;
-    IRCConnection   *ircConnection;
+    WebSocketClient *ircConnection;
     ServerTab   *serverTab;
     QStringList joinChannels;
     QSystemTrayIcon *trayIcon;
