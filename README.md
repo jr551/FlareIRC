@@ -47,6 +47,6 @@ development. It's kept public as a snapshot of an early hobby project.
 
 ## License
 
-No license file is currently included in this repository. Until one is
-added, all rights are reserved by default — please contact the repo owner
-before reusing this code.
+MIT — see [LICENSE](LICENSE). Note that the prebuilt Qt4 libraries bundled in
+the distributed archives are LGPL and are not covered by this project's
+license.
