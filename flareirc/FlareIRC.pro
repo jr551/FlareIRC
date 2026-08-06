@@ -2,6 +2,7 @@
 # Project created by QtCreator 2009-12-15T14:51:44
 # -------------------------------------------------
 QT += network \
+    multimedia \
     webkit \
     script
 TARGET = FlareIRC
@@ -16,7 +17,8 @@ SOURCES += main.cpp \
     talkwindowtab.cpp \
     inputdialog.cpp \
     optionswindow.cpp \
-    scriptmanager.cpp
+    scriptmanager.cpp \
+    voiceengine.cpp
 HEADERS += connectwindow.h \
     ircsocket.h \
     talkwindow.h \
@@ -26,7 +28,8 @@ HEADERS += connectwindow.h \
     talkwindowtab.h \
     inputdialog.h \
     optionswindow.h \
-    scriptmanager.h
+    scriptmanager.h \
+    voiceengine.h
 FORMS += connectwindow.ui \
     talkwindow.ui \
     chattab.ui \
@@ -38,3 +41,5 @@ OTHER_FILES += FlareIRC.rc
 RC_FILE = FlareIRC.rc
 ICON = icon.icns
 RESOURCES += flareirc.qrc
+LIBS += -lopus
+
